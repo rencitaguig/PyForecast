@@ -1,0 +1,119 @@
+:root{
+  --bg: #eaf6ff;
+  --panel: #ffffff;
+  --accent: #1e6fb8;
+  --accent-2: #0b4f86;
+  --muted: #6b7c8f;
+}
+*{box-sizing:border-box;font-family:Inter,Segoe UI,Roboto,Arial,sans-serif}
+body{margin:0;background:linear-gradient(180deg,var(--bg),#d7efff);color:var(--accent-2)}
+.app{min-height:100vh;display:flex;flex-direction:column}
+.app.night{background:linear-gradient(180deg,#0b2b3a,#09202a);color:#d7eef9}
+.app.day{background:linear-gradient(180deg,var(--bg),#d7efff);color:var(--accent-2)}
+.header{padding:24px;text-align:center}
+.header h1{margin:0;color:var(--accent)}
+.subtitle{margin:6px 0 0;color:var(--muted)}
+.container{max-width:900px;margin:20px auto;padding:16px}
+.controls{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;margin-bottom:18px}
+.controls input{padding:10px;border-radius:8px;border:1px solid rgba(11,79,134,0.12)}
+.controls button{background:var(--accent);color:white;padding:10px 16px;border-radius:8px;border:none;cursor:pointer}
+.controls .error{grid-column:1/-1;color:#8b1e1e;margin-top:8px}
+.current{background:var(--panel);padding:12px;border-radius:10px;box-shadow:0 6px 18px rgba(11,79,134,0.06);margin-bottom:12px}
+.current-row{display:flex;align-items:center;gap:16px}
+.current-temp{font-size:32px;color:var(--accent-2);font-weight:700;display:flex;align-items:center;gap:8px}
+.current-temp svg{margin-right:4px}
+.current-precip{font-size:13px;color:var(--muted);margin-top:6px}
+
+.unit{background:transparent;border:1px solid rgba(11,79,134,0.12);padding:8px 10px;border-radius:6px;cursor:pointer}
+.unit.active{background:var(--accent);color:white;border-color:var(--accent-2)}
+
+.expanded{margin-top:10px;border-top:1px dashed rgba(11,79,134,0.06);padding-top:8px}
+.expanded-note{font-size:12px;color:var(--muted);margin-bottom:6px}
+.expanded-list{display:flex;flex-direction:column;gap:8px}
+.expanded-row{display:flex;gap:12px;align-items:center;padding:6px;border-radius:6px;background:linear-gradient(180deg,rgba(234,246,255,0.6),rgba(255,255,255,0.6))}
+.expanded-time{width:70px;color:var(--muted)}
+.expanded-temp{font-weight:600;color:var(--accent-2)}
+.expanded-pop{color:var(--muted);min-width:40px}
+.expanded-extra{color:var(--muted);margin-left:auto}
+
+/* Drawer / modal on right */
+.drawer-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.15);opacity:0;pointer-events:none;transition:opacity .2s}
+.drawer-overlay.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;right:-420px;top:0;height:100%;width:420px;background:var(--panel);box-shadow:-8px 0 30px rgba(2,48,75,0.2);transition:right .25s;padding:16px;overflow:auto}
+.drawer.open{right:0}
+.drawer-header{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(11,79,134,0.06);padding-bottom:8px;margin-bottom:8px}
+.drawer-header h3{margin:0}
+.drawer-header .close{background:transparent;border:1px solid rgba(11,79,134,0.08);padding:6px 8px;border-radius:6px;cursor:pointer}
+.drawer-body{display:flex;flex-direction:column;gap:8px}
+.drawer-row{display:flex;gap:8px;align-items:center;padding:8px;border-radius:8px;background:linear-gradient(180deg,rgba(234,246,255,0.6),rgba(255,255,255,0.6))}
+.drawer-time{width:72px;color:var(--muted)}
+.drawer-temp{font-weight:700;color:var(--accent-2)}
+.drawer-pop{color:var(--muted);min-width:48px}
+.drawer-extra{color:var(--muted);margin-left:auto}
+.forecast h2{margin:8px 0}
+.cards{display:flex;gap:12px;flex-wrap:wrap}
+.card{background:var(--panel);padding:12px;border-radius:10px;min-width:140px;flex:1;box-shadow:0 6px 18px rgba(11,79,134,0.06)}
+.card-header{display:flex;align-items:center;gap:8px;font-weight:600;color:var(--accent)}
+.card-title-left{width:28px;height:28px;display:flex;align-items:center}
+.card .card-body{margin-top:6px}
+.card svg{display:block}
+.condition{font-size:14px;color:var(--accent-2);margin-top:6px}
+.temps{font-weight:600;margin-top:8px}
+.pop{color:var(--muted);margin-top:6px}
+.footer{padding:14px;text-align:center;color:var(--muted)}
+
+/* Auth Styles */
+.auth-container{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:16px;background-color:#667eea;background-image:linear-gradient(rgba(102,126,234,0.35),rgba(118,75,162,0.35)), url('../assets/bgreglog1.gif');background-size:cover;background-position:center;background-repeat:no-repeat}
+.auth-card{background:rgba(255,255,255,0.88);padding:40px;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.12);width:100%;max-width:400px;backdrop-filter: blur(6px)}
+.auth-card h1{text-align:center;color:var(--accent);margin:0 0 8px}
+.auth-card h2{text-align:center;color:var(--accent-2);margin:0 0 24px;font-size:20px}
+/* Tagline under auth card title */
+.tagline{text-align:center;color:var(--muted);margin:6px 0 12px;font-size:14px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;margin-bottom:6px;color:var(--accent-2);font-weight:500;font-size:14px}
+.form-group input{width:100%;padding:10px;border:1px solid rgba(11,79,134,0.2);border-radius:6px;font-size:14px}
+.form-group input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(30,111,184,0.1)}
+.error-message{background:#fee;color:#8b1e1e;padding:10px;border-radius:6px;margin-bottom:16px;font-size:14px}
+.submit-btn{width:100%;padding:10px;background:var(--accent);color:white;border:none;border-radius:6px;font-weight:600;cursor:pointer;font-size:15px}
+.submit-btn:hover{background:var(--accent-2)}
+.submit-btn:disabled{opacity:0.6;cursor:not-allowed}
+.auth-footer{text-align:center;margin-top:16px}
+.auth-footer p{margin:0;color:var(--muted);font-size:14px}
+.link-btn{background:none;border:none;color:var(--accent);cursor:pointer;text-decoration:underline;font-weight:600;padding:0}
+.link-btn:hover{color:var(--accent-2)}
+
+/* Logout button in header */
+.logout-btn{background:var(--accent);color:white;padding:8px 12px;border-radius:6px;border:none;cursor:pointer;font-weight:600;font-size:14px}
+.logout-btn:hover{background:var(--accent-2)}
+
+
+/* Sidebar for saved cities */
+.sidebar-toggle{background:transparent;border:1px solid rgba(11,79,134,0.2);padding:8px 12px;border-radius:6px;cursor:pointer;font-size:18px;color:var(--accent)}
+.sidebar-toggle:hover{background:rgba(11,79,134,0.08)}
+
+.sidebar-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.15);opacity:0;pointer-events:none;transition:opacity .2s;z-index:40}
+.sidebar-overlay.open{opacity:1;pointer-events:auto}
+
+.sidebar{position:fixed;left:-300px;top:0;height:100%;width:300px;background:var(--panel);box-shadow:8px 0 30px rgba(2,48,75,0.2);transition:left .25s;padding:16px;overflow:auto;z-index:45}
+.sidebar.open{left:0}
+
+.sidebar-header{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(11,79,134,0.06);padding-bottom:8px;margin-bottom:12px}
+.sidebar-header h3{margin:0;font-size:16px;color:var(--accent)}
+.sidebar-header .close{background:transparent;border:1px solid rgba(11,79,134,0.08);padding:4px 8px;border-radius:4px;cursor:pointer;font-size:14px}
+
+.sidebar-body{display:flex;flex-direction:column;gap:8px}
+
+.saved-city{display:flex;align-items:center;gap:8px;padding:8px;border-radius:6px;background:linear-gradient(180deg,rgba(234,246,255,0.4),rgba(255,255,255,0.4));border:1px solid rgba(11,79,134,0.06)}
+.city-name-btn{flex:1;background:transparent;border:none;padding:0;cursor:pointer;color:var(--accent);font-weight:500;text-align:left;font-size:14px}
+.city-name-btn:hover{color:var(--accent-2)}
+.delete-btn{background:transparent;border:none;padding:4px 8px;cursor:pointer;font-size:14px;opacity:0.6}
+.delete-btn:hover{opacity:1}
+
+/* Save button in controls */
+.save-btn{background:var(--accent);color:white;padding:10px 16px;border-radius:8px;border:none;cursor:pointer;font-weight:600;white-space:nowrap}
+.save-btn:hover{background:var(--accent-2)}
+
+/* Export button */
+.export-btn{background:transparent;border:1px solid rgba(11,79,134,0.14);padding:6px 10px;border-radius:6px;cursor:pointer;color:var(--accent-2);font-weight:600}
+.export-btn:hover{background:rgba(11,79,134,0.04)}
+
