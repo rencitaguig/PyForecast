@@ -62,4 +62,3 @@ else:
                 print(f"{day_name} {d}: {most_common_condition}, {low}ºF - {high}ºF")
         else:
             print("No forecast data available.")
-# ...existing code...

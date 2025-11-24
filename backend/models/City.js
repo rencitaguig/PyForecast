@@ -17,4 +17,9 @@ const citySchema = new mongoose.Schema(
   { timestamps: true }
 )
 
+// Allow the same city name to exist for different users, but prevent the same user
+// from saving the same city multiple times. This creates a compound unique
+// index on (user, name).
+citySchema.index({ user: 1, name: 1 }, { unique: true })
+
 module.exports = mongoose.model('City', citySchema)

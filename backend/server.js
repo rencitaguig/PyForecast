@@ -18,6 +18,33 @@ const connectDB = async () => {
       useUnifiedTopology: true,
     })
     console.log('✓ Connected to MongoDB')
+    // Ensure City indexes are correct. If an old unique index on `name` exists
+    // (from previous schema), drop it so different users can save the same city.
+    try {
+      const City = require('./models/City')
+      // Attempt to drop legacy single-field unique index 'name_1' if present
+      try {
+        await City.collection.dropIndex('name_1')
+        console.log('Dropped legacy index: name_1')
+      } catch (dropErr) {
+        // Ignore if index does not exist
+        if (dropErr && (dropErr.codeName === 'IndexNotFound' || /index not found/i.test(dropErr.message))) {
+          // no-op
+        } else if (dropErr) {
+          console.warn('Could not drop legacy index name_1:', dropErr.message || dropErr)
+        }
+      }
+
+      // Ensure the compound index (user + name) is created as defined by the schema
+      try {
+        await City.createIndexes()
+        console.log('Ensured City indexes')
+      } catch (idxErr) {
+        console.warn('Error ensuring City indexes:', idxErr.message || idxErr)
+      }
+    } catch (e) {
+      console.warn('City index setup skipped:', e.message || e)
+    }
   } catch (err) {
     console.error('✗ MongoDB connection error:', err.message)
     process.exit(1)
