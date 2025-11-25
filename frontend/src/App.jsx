@@ -53,7 +53,7 @@ export default function AppContent() {
   const [error, setError] = useState('')
   const [savedCities, setSavedCities] = useState([])
   const [sidebarOpen, setSidebarOpen] = useState(false)
-  const BACKEND_BASE = 'http://localhost:5000'
+  const BACKEND_BASE = 'https://pyforecast-backend.onrender.com'
 
   // Load saved cities on mount
   useEffect(() => {
