@@ -40,7 +40,7 @@ export default function AppContent() {
   const [authView, setAuthView] = useState('login') // 'login' or 'register'
   const [city, setCity] = useState('')
   const [units, setUnits] = useState('metric')
-  const DEFAULT_API_KEY = '30d4741c779ba94c470ca1f63045390a'
+  const DEFAULT_API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY || '30d4741c779ba94c470ca1f63045390a'
   const [current, setCurrent] = useState(null)
   const [currentPrecip, setCurrentPrecip] = useState(null)
   const [hourly, setHourly] = useState([])
@@ -53,7 +53,7 @@ export default function AppContent() {
   const [error, setError] = useState('')
   const [savedCities, setSavedCities] = useState([])
   const [sidebarOpen, setSidebarOpen] = useState(false)
-  const BACKEND_BASE = 'https://pyforecast-backend.onrender.com'
+  const BACKEND_BASE = import.meta.env.VITE_API_BASE || 'https://pyforecast-backend.onrender.com'
 
   // Load saved cities on mount
   useEffect(() => {

@@ -14,7 +14,8 @@ export default function Login({ onLoginSuccess, onSwitchToRegister }) {
     setLoading(true)
 
     try {
-      const response = await axios.post('https://pyforecast-backend.onrender.com/api/auth/login', {
+      const BACKEND_BASE = import.meta.env.VITE_API_BASE || 'https://pyforecast-backend.onrender.com'
+      const response = await axios.post(`${BACKEND_BASE}/api/auth/login`, {
         email,
         password,
       })

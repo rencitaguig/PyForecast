@@ -27,7 +27,8 @@ export default function Register({ onRegisterSuccess, onSwitchToLogin }) {
     setLoading(true)
 
     try {
-      const response = await axios.post('http://https://pyforecast-backend.onrender.com/api/auth/register', {
+      const BACKEND_BASE = import.meta.env.VITE_API_BASE || 'https://pyforecast-backend.onrender.com'
+      const response = await axios.post(`${BACKEND_BASE}/api/auth/register`, {
         email,
         username,
         password,
