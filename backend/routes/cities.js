@@ -22,6 +22,10 @@ router.post('/', authMiddleware, async (req, res) => {
     await city.save()
     res.status(201).json(city)
   } catch (err) {
+    // Handle E11000 duplicate key error (user + name compound unique index)
+    if (err.code === 11000) {
+      return res.status(409).json({ error: 'Already in Saved Cities' })
+    }
     res.status(500).json({ error: err.message })
   }
 })
